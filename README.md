@@ -1,0 +1,9 @@
+一个基于Android support CardView复写的layout类库
+
+CardView 继承自FrameLayout,对于要使用LinearLayout 与RelativeLayout的布局需要在内部嵌套多一层布局,增加了布局嵌套,所以(你懂的):
+
+CardLinearLayout 继承自 LinearLayout
+
+CardRelativeLayout 继承自 RelativeLayout
+
+所有功能与CardView一致,包括样式以及使用方法,唯一不同的只是继承的父类不一样

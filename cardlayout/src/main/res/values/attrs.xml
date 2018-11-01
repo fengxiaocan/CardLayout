@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="CardLinearLayout">
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+
+    <declare-styleable name="CardRelativeLayout" tools:ignore="MissingDefaultResource">
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+</resources>
