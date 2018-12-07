@@ -13,7 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.Px;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
@@ -25,6 +24,7 @@ import android.widget.RelativeLayout;
 public class CardRelativeLayout extends RelativeLayout {
 	private static final int[] COLOR_BACKGROUND_ATTR = new int[]{16842801};
 	private static final CardViewImpl IMPL;
+	
 	static {
 		if (Build.VERSION.SDK_INT >= 21) {
 			IMPL = new CardViewApi21Impl();
@@ -55,7 +55,9 @@ public class CardRelativeLayout extends RelativeLayout {
 		this(context,attrs,android.support.v7.cardview.R.attr.cardViewStyle);
 	}
 	
-	public CardRelativeLayout(@NonNull Context context,@Nullable AttributeSet attrs,int defStyleAttr) {
+	public CardRelativeLayout(
+			@NonNull Context context,@Nullable AttributeSet attrs,int defStyleAttr)
+	{
 		super(context,attrs,defStyleAttr);
 		this.mContentPadding = new Rect();
 		this.mShadowBounds = new Rect();
@@ -72,10 +74,11 @@ public class CardRelativeLayout extends RelativeLayout {
 			
 			public void setShadowPadding(int left,int top,int right,int bottom) {
 				CardRelativeLayout.this.mShadowBounds.set(left,top,right,bottom);
-				CardRelativeLayout.super.setPadding(left + CardRelativeLayout.this.mContentPadding.left,
-				                          top + CardRelativeLayout.this.mContentPadding.top,
-				                          right + CardRelativeLayout.this.mContentPadding.right,
-				                          bottom + CardRelativeLayout.this.mContentPadding.bottom);
+				CardRelativeLayout.super
+						.setPadding(left + CardRelativeLayout.this.mContentPadding.left,
+						            top + CardRelativeLayout.this.mContentPadding.top,
+						            right + CardRelativeLayout.this.mContentPadding.right,
+						            bottom + CardRelativeLayout.this.mContentPadding.bottom);
 			}
 			
 			public void setMinWidthHeightInternal(int width,int height) {
@@ -103,12 +106,12 @@ public class CardRelativeLayout extends RelativeLayout {
 			}
 		};
 		TypedArray a = context
-				.obtainStyledAttributes(attrs,R.styleable.CardRelativeLayout,
-				                        defStyleAttr,R.style.CardView);
+				.obtainStyledAttributes(attrs,R.styleable.CardRelativeLayout,defStyleAttr,
+				                        R.style.CardView);
 		ColorStateList backgroundColor;
 		if (a.hasValue(R.styleable.CardRelativeLayout_cardBackgroundColor)) {
-			backgroundColor = a.getColorStateList(
-					R.styleable.CardRelativeLayout_cardBackgroundColor);
+			backgroundColor = a
+					.getColorStateList(R.styleable.CardRelativeLayout_cardBackgroundColor);
 		}
 		else {
 			TypedArray aa = this.getContext().obtainStyledAttributes(COLOR_BACKGROUND_ATTR);
@@ -116,45 +119,40 @@ public class CardRelativeLayout extends RelativeLayout {
 			aa.recycle();
 			float[] hsv = new float[3];
 			Color.colorToHSV(themeColorBackground,hsv);
-			backgroundColor = ColorStateList.valueOf(hsv[2] > 0.5F ? this.getResources().getColor(
-					R.color.cardview_light_background)
-					                                         : this.getResources().getColor(
-							                                         R.color.cardview_dark_background));
+			backgroundColor = ColorStateList.valueOf(
+					hsv[2] > 0.5F ? this.getResources().getColor(R.color.cardview_light_background)
+							: this.getResources().getColor(R.color.cardview_dark_background));
 		}
 		
-		float radius = a
-				.getDimension(R.styleable.CardRelativeLayout_cardCornerRadius,
-				              0.0F);
-		float elevation = a
-				.getDimension(R.styleable.CardRelativeLayout_cardElevation,0.0F);
-		float maxElevation = a
-				.getDimension(R.styleable.CardRelativeLayout_cardMaxElevation,
-				              0.0F);
+		float radius = a.getDimension(R.styleable.CardRelativeLayout_cardCornerRadius,0.0F);
+		float elevation = a.getDimension(R.styleable.CardRelativeLayout_cardElevation,0.0F);
+		float maxElevation = a.getDimension(R.styleable.CardRelativeLayout_cardMaxElevation,0.0F);
 		this.mCompatPadding = a
-				.getBoolean(R.styleable.CardRelativeLayout_cardUseCompatPadding,
-				            false);
-		this.mPreventCornerOverlap = a.getBoolean(
-				R.styleable.CardRelativeLayout_cardPreventCornerOverlap,true);
-		int defaultPadding = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_contentPadding,0);
-		this.mContentPadding.left = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_contentPaddingLeft,defaultPadding);
-		this.mContentPadding.top = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_contentPaddingTop,defaultPadding);
-		this.mContentPadding.right = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_contentPaddingRight,
-				defaultPadding);
-		this.mContentPadding.bottom = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_contentPaddingBottom,
-				defaultPadding);
+				.getBoolean(R.styleable.CardRelativeLayout_cardUseCompatPadding,false);
+		this.mPreventCornerOverlap = a
+				.getBoolean(R.styleable.CardRelativeLayout_cardPreventCornerOverlap,true);
+		int defaultPadding = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPadding,0);
+		this.mContentPadding.left = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPaddingLeft,
+				                       defaultPadding);
+		this.mContentPadding.top = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPaddingTop,
+				                       defaultPadding);
+		this.mContentPadding.right = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPaddingRight,
+				                       defaultPadding);
+		this.mContentPadding.bottom = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPaddingBottom,
+				                       defaultPadding);
 		if (elevation > maxElevation) {
 			maxElevation = elevation;
 		}
 		
-		this.mUserSetMinWidth = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_android_minWidth,0);
-		this.mUserSetMinHeight = a.getDimensionPixelSize(
-				R.styleable.CardRelativeLayout_android_minHeight,0);
+		this.mUserSetMinWidth = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_android_minWidth,0);
+		this.mUserSetMinHeight = a
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_android_minHeight,0);
 		a.recycle();
 		IMPL.initialize(this.mCardViewDelegate,context,backgroundColor,radius,elevation,
 		                maxElevation);

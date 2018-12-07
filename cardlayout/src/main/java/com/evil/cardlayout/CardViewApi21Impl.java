@@ -15,24 +15,28 @@ class CardViewApi21Impl implements CardViewImpl {
 	CardViewApi21Impl() {
 	}
 	
-	public void initialize(CardViewDelegate cardView,Context context,ColorStateList backgroundColor,float radius,float elevation,float maxElevation) {
+	public void initialize(
+			CardViewDelegate cardView,Context context,ColorStateList backgroundColor,float radius,
+			float elevation,float maxElevation)
+	{
 		RoundRectDrawable background = new RoundRectDrawable(backgroundColor,radius);
 		cardView.setCardBackground(background);
 		View view = cardView.getCardView();
 		view.setClipToOutline(true);
 		view.setElevation(elevation);
-		this.setMaxElevation(cardView, maxElevation);
+		this.setMaxElevation(cardView,maxElevation);
 	}
 	
-	public void setRadius(CardViewDelegate cardView, float radius) {
+	public void setRadius(CardViewDelegate cardView,float radius) {
 		this.getCardBackground(cardView).setRadius(radius);
 	}
 	
 	public void initStatic() {
 	}
 	
-	public void setMaxElevation(CardViewDelegate cardView, float maxElevation) {
-		this.getCardBackground(cardView).setPadding(maxElevation, cardView.getUseCompatPadding(), cardView.getPreventCornerOverlap());
+	public void setMaxElevation(CardViewDelegate cardView,float maxElevation) {
+		this.getCardBackground(cardView).setPadding(maxElevation,cardView.getUseCompatPadding(),
+		                                            cardView.getPreventCornerOverlap());
 		this.updatePadding(cardView);
 	}
 	
@@ -52,7 +56,7 @@ class CardViewApi21Impl implements CardViewImpl {
 		return this.getCardBackground(cardView).getRadius();
 	}
 	
-	public void setElevation(CardViewDelegate cardView, float elevation) {
+	public void setElevation(CardViewDelegate cardView,float elevation) {
 		cardView.getCardView().setElevation(elevation);
 	}
 	
@@ -62,26 +66,29 @@ class CardViewApi21Impl implements CardViewImpl {
 	
 	public void updatePadding(CardViewDelegate cardView) {
 		if (!cardView.getUseCompatPadding()) {
-			cardView.setShadowPadding(0, 0, 0, 0);
-		} else {
+			cardView.setShadowPadding(0,0,0,0);
+		}
+		else {
 			float elevation = this.getMaxElevation(cardView);
 			float radius = this.getRadius(cardView);
 			int hPadding = (int)Math.ceil((double)RoundRectDrawableWithShadow
-					.calculateHorizontalPadding(elevation,radius,cardView.getPreventCornerOverlap()));
-			int vPadding = (int)Math.ceil((double)RoundRectDrawableWithShadow.calculateVerticalPadding(elevation, radius, cardView.getPreventCornerOverlap()));
-			cardView.setShadowPadding(hPadding, vPadding, hPadding, vPadding);
+					.calculateHorizontalPadding(elevation,radius,
+					                            cardView.getPreventCornerOverlap()));
+			int vPadding = (int)Math.ceil((double)RoundRectDrawableWithShadow
+					.calculateVerticalPadding(elevation,radius,cardView.getPreventCornerOverlap()));
+			cardView.setShadowPadding(hPadding,vPadding,hPadding,vPadding);
 		}
 	}
 	
 	public void onCompatPaddingChanged(CardViewDelegate cardView) {
-		this.setMaxElevation(cardView, this.getMaxElevation(cardView));
+		this.setMaxElevation(cardView,this.getMaxElevation(cardView));
 	}
 	
 	public void onPreventCornerOverlapChanged(CardViewDelegate cardView) {
-		this.setMaxElevation(cardView, this.getMaxElevation(cardView));
+		this.setMaxElevation(cardView,this.getMaxElevation(cardView));
 	}
 	
-	public void setBackgroundColor(CardViewDelegate cardView, @Nullable ColorStateList color) {
+	public void setBackgroundColor(CardViewDelegate cardView,@Nullable ColorStateList color) {
 		this.getCardBackground(cardView).setColor(color);
 	}
 	

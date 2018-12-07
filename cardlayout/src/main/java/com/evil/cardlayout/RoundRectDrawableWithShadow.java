@@ -48,6 +48,7 @@ class RoundRectDrawableWithShadow extends Drawable {
 	{
 		this.mShadowStartColor = resources
 				.getColor(android.support.v7.cardview.R.color.cardview_shadow_start_color);
+		
 		this.mShadowEndColor = resources
 				.getColor(android.support.v7.cardview.R.color.cardview_shadow_end_color);
 		this.mInsetShadow = resources.getDimensionPixelSize(
@@ -195,9 +196,8 @@ class RoundRectDrawableWithShadow extends Drawable {
 		canvas.translate(this.mCardBounds.left + inset,this.mCardBounds.top + inset);
 		canvas.drawPath(this.mCornerShadowPath,this.mCornerShadowPaint);
 		if (drawHorizontalEdges) {
-			canvas.drawRect(
-					0.0F,edgeShadowTop,this.mCardBounds.width() - 2.0F * inset,-this.mCornerRadius,
-					this.mEdgeShadowPaint);
+			canvas.drawRect(0.0F,edgeShadowTop,this.mCardBounds.width() - 2.0F * inset,
+			                -this.mCornerRadius,this.mEdgeShadowPaint);
 		}
 		
 		canvas.restoreToCount(saved);
@@ -206,9 +206,8 @@ class RoundRectDrawableWithShadow extends Drawable {
 		canvas.rotate(180.0F);
 		canvas.drawPath(this.mCornerShadowPath,this.mCornerShadowPaint);
 		if (drawHorizontalEdges) {
-			canvas.drawRect(
-					0.0F,edgeShadowTop,this.mCardBounds.width() - 2.0F * inset,
-					-this.mCornerRadius + this.mShadowSize,this.mEdgeShadowPaint);
+			canvas.drawRect(0.0F,edgeShadowTop,this.mCardBounds.width() - 2.0F * inset,
+			                -this.mCornerRadius + this.mShadowSize,this.mEdgeShadowPaint);
 		}
 		
 		canvas.restoreToCount(saved);
@@ -217,9 +216,8 @@ class RoundRectDrawableWithShadow extends Drawable {
 		canvas.rotate(270.0F);
 		canvas.drawPath(this.mCornerShadowPath,this.mCornerShadowPaint);
 		if (drawVerticalEdges) {
-			canvas.drawRect(
-					0.0F,edgeShadowTop,this.mCardBounds.height() - 2.0F * inset,-this.mCornerRadius,
-					this.mEdgeShadowPaint);
+			canvas.drawRect(0.0F,edgeShadowTop,this.mCardBounds.height() - 2.0F * inset,
+			                -this.mCornerRadius,this.mEdgeShadowPaint);
 		}
 		
 		canvas.restoreToCount(saved);
@@ -228,17 +226,16 @@ class RoundRectDrawableWithShadow extends Drawable {
 		canvas.rotate(90.0F);
 		canvas.drawPath(this.mCornerShadowPath,this.mCornerShadowPaint);
 		if (drawVerticalEdges) {
-			canvas.drawRect(
-					0.0F,edgeShadowTop,this.mCardBounds.height() - 2.0F * inset,-this.mCornerRadius,
-					this.mEdgeShadowPaint);
+			canvas.drawRect(0.0F,edgeShadowTop,this.mCardBounds.height() - 2.0F * inset,
+			                -this.mCornerRadius,this.mEdgeShadowPaint);
 		}
 		
 		canvas.restoreToCount(saved);
 	}
 	
 	private void buildShadowCorners() {
-		RectF innerBounds = new RectF(
-				-this.mCornerRadius,-this.mCornerRadius,this.mCornerRadius,this.mCornerRadius);
+		RectF innerBounds = new RectF(-this.mCornerRadius,-this.mCornerRadius,this.mCornerRadius,
+		                              this.mCornerRadius);
 		RectF outerBounds = new RectF(innerBounds);
 		outerBounds.inset(-this.mShadowSize,-this.mShadowSize);
 		if (this.mCornerShadowPath == null) {
