@@ -24,7 +24,22 @@ import android.widget.RelativeLayout;
 public class CardRelativeLayout extends RelativeLayout {
 	private static final int[] COLOR_BACKGROUND_ATTR = new int[]{16842801};
 	private static final CardViewImpl IMPL;
-	
+	private static float sDefaultCardElevation = 0.0f;
+	private static float sDefaultCardRadius = 0.0f;
+	private static int sDefaultPadding = 0;
+
+	public static void setDefaultCardElevation(float sDefaultCardElevation) {
+		CardRelativeLayout.sDefaultCardElevation = sDefaultCardElevation;
+	}
+
+	public static void setDefaultCardRadius(float sDefaultCardRadius) {
+		CardRelativeLayout.sDefaultCardRadius = sDefaultCardRadius;
+	}
+
+	public static void setDefaultPadding(int sDefaultPadding) {
+		CardRelativeLayout.sDefaultPadding = sDefaultPadding;
+	}
+
 	static {
 		if (Build.VERSION.SDK_INT >= 21) {
 			IMPL = new CardViewApi21Impl();
@@ -108,10 +123,21 @@ public class CardRelativeLayout extends RelativeLayout {
 		TypedArray a = context
 				.obtainStyledAttributes(attrs,R.styleable.CardRelativeLayout,defStyleAttr,
 				                        R.style.CardView);
-		ColorStateList backgroundColor;
+		ColorStateList backgroundColor = null;
 		if (a.hasValue(R.styleable.CardRelativeLayout_cardBackgroundColor)) {
-			backgroundColor = a
-					.getColorStateList(R.styleable.CardRelativeLayout_cardBackgroundColor);
+			try {
+				backgroundColor = a
+						.getColorStateList(R.styleable.CardRelativeLayout_cardBackgroundColor);
+			} catch (Exception e) {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+					Drawable drawable = a.getDrawable(
+							R.styleable.CardRelativeLayout_cardBackgroundColor);
+					setBackground(drawable);
+				}
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+					backgroundColor = getBackgroundTintList();
+				}
+			}
 		}
 		else {
 			TypedArray aa = this.getContext().obtainStyledAttributes(COLOR_BACKGROUND_ATTR);
@@ -124,15 +150,15 @@ public class CardRelativeLayout extends RelativeLayout {
 							: this.getResources().getColor(R.color.cardview_dark_background));
 		}
 		
-		float radius = a.getDimension(R.styleable.CardRelativeLayout_cardCornerRadius,0.0F);
-		float elevation = a.getDimension(R.styleable.CardRelativeLayout_cardElevation,0.0F);
+		float radius = a.getDimension(R.styleable.CardRelativeLayout_cardCornerRadius,sDefaultCardRadius);
+		float elevation = a.getDimension(R.styleable.CardRelativeLayout_cardElevation,sDefaultCardElevation);
 		float maxElevation = a.getDimension(R.styleable.CardRelativeLayout_cardMaxElevation,0.0F);
 		this.mCompatPadding = a
 				.getBoolean(R.styleable.CardRelativeLayout_cardUseCompatPadding,false);
 		this.mPreventCornerOverlap = a
 				.getBoolean(R.styleable.CardRelativeLayout_cardPreventCornerOverlap,true);
 		int defaultPadding = a
-				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPadding,0);
+				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPadding,sDefaultPadding);
 		this.mContentPadding.left = a
 				.getDimensionPixelSize(R.styleable.CardRelativeLayout_contentPaddingLeft,
 				                       defaultPadding);
@@ -157,7 +183,19 @@ public class CardRelativeLayout extends RelativeLayout {
 		IMPL.initialize(this.mCardViewDelegate,context,backgroundColor,radius,elevation,
 		                maxElevation);
 	}
-	
+
+	@Override
+	public void setBackgroundColor(int color) {
+		super.setBackgroundColor(color);
+		setCardBackgroundColor(color);
+	}
+
+	@Override
+	public void setBackgroundTintList( ColorStateList tint) {
+		super.setBackgroundTintList(tint);
+		setCardBackgroundColor(tint);
+	}
+
 	public void setPadding(int left,int top,int right,int bottom) {
 	}
 	

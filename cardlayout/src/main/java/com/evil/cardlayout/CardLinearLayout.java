@@ -14,7 +14,6 @@ import android.support.annotation.Px;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
  * @author noah
@@ -25,20 +24,22 @@ import android.widget.RelativeLayout;
 public class CardLinearLayout extends LinearLayout {
 	private static final int[] COLOR_BACKGROUND_ATTR = new int[]{16842801};
 	private static final CardViewImpl IMPL;
+	private static float sDefaultCardElevation = 0.0f;
+	private static float sDefaultCardRadius = 0.0f;
+	private static int sDefaultPadding = 0;
+
 	static {
 		if (Build.VERSION.SDK_INT >= 21) {
 			IMPL = new CardViewApi21Impl();
-		}
-		else if (Build.VERSION.SDK_INT >= 17) {
+		} else if (Build.VERSION.SDK_INT >= 17) {
 			IMPL = new CardViewApi17Impl();
-		}
-		else {
+		} else {
 			IMPL = new CardViewBaseImpl();
 		}
-		
+
 		IMPL.initStatic();
 	}
-	
+
 	final Rect mContentPadding;
 	final Rect mShadowBounds;
 	private final CardViewDelegate mCardViewDelegate;
@@ -46,30 +47,21 @@ public class CardLinearLayout extends LinearLayout {
 	int mUserSetMinHeight;
 	private boolean mCompatPadding;
 	private boolean mPreventCornerOverlap;
-	
-	public CardLinearLayout(@NonNull Context context) {
-		this(context,(AttributeSet)null);
-	}
-	
-	public CardLinearLayout(@NonNull Context context,@Nullable AttributeSet attrs) {
-		this(context,attrs,android.support.v7.cardview.R.attr.cardViewStyle);
-	}
-	
 	public CardLinearLayout(@NonNull Context context,@Nullable AttributeSet attrs,int defStyleAttr) {
 		super(context,attrs,defStyleAttr);
 		this.mContentPadding = new Rect();
 		this.mShadowBounds = new Rect();
 		this.mCardViewDelegate = new CardViewDelegate() {
 			private Drawable mCardBackground;
-			
+
 			public boolean getUseCompatPadding() {
 				return CardLinearLayout.this.getUseCompatPadding();
 			}
-			
+
 			public boolean getPreventCornerOverlap() {
 				return CardLinearLayout.this.getPreventCornerOverlap();
 			}
-			
+
 			public void setShadowPadding(int left,int top,int right,int bottom) {
 				CardLinearLayout.this.mShadowBounds.set(left,top,right,bottom);
 				CardLinearLayout.super.setPadding(left + CardLinearLayout.this.mContentPadding.left,
@@ -77,27 +69,27 @@ public class CardLinearLayout extends LinearLayout {
 				                          right + CardLinearLayout.this.mContentPadding.right,
 				                          bottom + CardLinearLayout.this.mContentPadding.bottom);
 			}
-			
+
 			public void setMinWidthHeightInternal(int width,int height) {
 				if (width > CardLinearLayout.this.mUserSetMinWidth) {
 					CardLinearLayout.super.setMinimumWidth(width);
 				}
-				
+
 				if (height > CardLinearLayout.this.mUserSetMinHeight) {
 					CardLinearLayout.super.setMinimumHeight(height);
 				}
-				
+
 			}
-			
+
 			public Drawable getCardBackground() {
 				return this.mCardBackground;
 			}
-			
+
 			public void setCardBackground(Drawable drawable) {
 				this.mCardBackground = drawable;
 				CardLinearLayout.this.setBackgroundDrawable(drawable);
 			}
-			
+
 			public View getCardView() {
 				return CardLinearLayout.this;
 			}
@@ -105,10 +97,21 @@ public class CardLinearLayout extends LinearLayout {
 		TypedArray a = context
 				.obtainStyledAttributes(attrs,R.styleable.CardLinearLayout,
 				                        defStyleAttr,R.style.CardView);
-		ColorStateList backgroundColor;
+		ColorStateList backgroundColor = null;
 		if (a.hasValue(R.styleable.CardLinearLayout_cardBackgroundColor)) {
-			backgroundColor = a.getColorStateList(
-					R.styleable.CardLinearLayout_cardBackgroundColor);
+			try {
+				backgroundColor = a.getColorStateList(
+						R.styleable.CardLinearLayout_cardBackgroundColor);
+			} catch (Exception e) {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+					Drawable drawable = a.getDrawable(
+							R.styleable.CardLinearLayout_cardBackgroundColor);
+					setBackground(drawable);
+				}
+				if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+					backgroundColor = getBackgroundTintList();
+				}
+			}
 		}
 		else {
 			TypedArray aa = this.getContext().obtainStyledAttributes(COLOR_BACKGROUND_ATTR);
@@ -121,12 +124,11 @@ public class CardLinearLayout extends LinearLayout {
 					                                         : this.getResources().getColor(
 							                                         R.color.cardview_dark_background));
 		}
-		
-		float radius = a
-				.getDimension(R.styleable.CardLinearLayout_cardCornerRadius,
-				              0.0F);
-		float elevation = a
-				.getDimension(R.styleable.CardLinearLayout_cardElevation,0.0F);
+
+		float radius = a.getDimension(R.styleable.CardLinearLayout_cardCornerRadius,
+				sDefaultCardRadius);
+		float elevation = a.getDimension(R.styleable.CardLinearLayout_cardElevation,
+				sDefaultCardElevation);
 		float maxElevation = a
 				.getDimension(R.styleable.CardLinearLayout_cardMaxElevation,
 				              0.0F);
@@ -135,8 +137,8 @@ public class CardLinearLayout extends LinearLayout {
 				            false);
 		this.mPreventCornerOverlap = a.getBoolean(
 				R.styleable.CardLinearLayout_cardPreventCornerOverlap,true);
-		int defaultPadding = a.getDimensionPixelSize(
-				R.styleable.CardLinearLayout_contentPadding,0);
+		int defaultPadding = a.getDimensionPixelSize(R.styleable.CardLinearLayout_contentPadding,
+				sDefaultPadding);
 		this.mContentPadding.left = a.getDimensionPixelSize(
 				R.styleable.CardLinearLayout_contentPaddingLeft,defaultPadding);
 		this.mContentPadding.top = a.getDimensionPixelSize(
@@ -150,7 +152,7 @@ public class CardLinearLayout extends LinearLayout {
 		if (elevation > maxElevation) {
 			maxElevation = elevation;
 		}
-		
+
 		this.mUserSetMinWidth = a.getDimensionPixelSize(
 				R.styleable.CardLinearLayout_android_minWidth,0);
 		this.mUserSetMinHeight = a.getDimensionPixelSize(
@@ -158,6 +160,26 @@ public class CardLinearLayout extends LinearLayout {
 		a.recycle();
 		IMPL.initialize(this.mCardViewDelegate,context,backgroundColor,radius,elevation,
 		                maxElevation);
+	}
+
+	public CardLinearLayout(@NonNull Context context) {
+		this(context, (AttributeSet) null);
+	}
+
+	public CardLinearLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
+		this(context, attrs, android.support.v7.cardview.R.attr.cardViewStyle);
+	}
+
+	public static void setDefaultCardElevation(float sDefaultCardElevation) {
+		CardLinearLayout.sDefaultCardElevation = sDefaultCardElevation;
+	}
+
+	public static void setDefaultCardRadius(float sDefaultCardRadius) {
+		CardLinearLayout.sDefaultCardRadius = sDefaultCardRadius;
+	}
+
+	public static void setDefaultPadding(int sDefaultPadding) {
+		CardLinearLayout.sDefaultPadding = sDefaultPadding;
 	}
 	
 	public void setPadding(int left,int top,int right,int bottom) {
@@ -293,6 +315,18 @@ public class CardLinearLayout extends LinearLayout {
 			IMPL.onPreventCornerOverlapChanged(this.mCardViewDelegate);
 		}
 		
+	}
+
+	@Override
+	public void setBackgroundColor(int color) {
+		super.setBackgroundColor(color);
+		setCardBackgroundColor(color);
+	}
+
+	@Override
+	public void setBackgroundTintList(ColorStateList tint) {
+		super.setBackgroundTintList(tint);
+		setCardBackgroundColor(tint);
 	}
 }
 

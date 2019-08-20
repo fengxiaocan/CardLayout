@@ -2,7 +2,9 @@ package com.evil.cardlayout;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 
 /**
@@ -14,9 +16,10 @@ import android.view.View;
 class CardViewApi21Impl implements CardViewImpl {
 	CardViewApi21Impl() {
 	}
-	
-	public void initialize(
-			CardViewDelegate cardView,Context context,ColorStateList backgroundColor,float radius,
+
+	@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+	public void initialize(CardViewDelegate cardView, Context context,
+			ColorStateList backgroundColor, float radius,
 			float elevation,float maxElevation)
 	{
 		RoundRectDrawable background = new RoundRectDrawable(backgroundColor,radius);
