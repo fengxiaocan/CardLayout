@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
+    <attr name="cardIsCircle" format="boolean" />
+    <attr name="cardIsRounded" format="boolean" />
+    <declare-styleable name="CardLayout">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
     <declare-styleable name="CardLinearLayout">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
         <attr name="cardBackgroundColor" />
         <attr name="cardCornerRadius" />
         <attr name="cardElevation" />
@@ -16,7 +37,129 @@
         <attr name="android_minHeight" />
     </declare-styleable>
 
-    <declare-styleable name="CardRelativeLayout" tools:ignore="MissingDefaultResource">
+    <declare-styleable name="CardFrameLayout">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+
+    <declare-styleable name="CardRelativeLayout">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+    <declare-styleable name="CardTextView">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+    <declare-styleable name="CardImageView">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+    <declare-styleable name="CardButton">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+    <declare-styleable name="CardImageButton">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+    <declare-styleable name="CardEditText">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
+        <attr name="cardBackgroundColor" />
+        <attr name="cardCornerRadius" />
+        <attr name="cardElevation" />
+        <attr name="cardMaxElevation" />
+        <attr name="cardUseCompatPadding" />
+        <attr name="cardPreventCornerOverlap" />
+        <attr name="contentPadding" />
+        <attr name="contentPaddingLeft" />
+        <attr name="contentPaddingTop" />
+        <attr name="contentPaddingRight" />
+        <attr name="contentPaddingBottom" />
+        <attr name="android_minWidth" />
+        <attr name="android_minHeight" />
+    </declare-styleable>
+    <declare-styleable name="CardViews">
+        <attr name="cardIsCircle" />
+        <attr name="cardIsRounded" />
         <attr name="cardBackgroundColor" />
         <attr name="cardCornerRadius" />
         <attr name="cardElevation" />

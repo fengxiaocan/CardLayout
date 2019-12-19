@@ -7,30 +7,30 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.evil.cardlayout.CardRelativeLayout
+    <com.evil.card.CardRelativeLayout
         android:id="@+id/cardrelativelayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_margin="30dp"
+        android:layout_margin="10dp"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp">
+        app:cardIsCircle="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="你好" />
-    </com.evil.cardlayout.CardRelativeLayout>
+    </com.evil.card.CardRelativeLayout>
 
 
-    <com.evil.cardlayout.CardLinearLayout
+    <com.evil.card.CardLinearLayout
         android:id="@+id/cardlinearlayout"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_margin="30dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="10dp"
+        app:cardIsRounded="true"
         app:cardElevation="8dp">
 
         <TextView
@@ -38,13 +38,51 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="你好" />
-    </com.evil.cardlayout.CardLinearLayout>
+    </com.evil.card.CardLinearLayout>
+
+    <com.evil.card.CardButton
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="你好"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardIsCircle="true"/>
+
+    <com.evil.card.CardImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="你好"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@mipmap/ic_launcher"
+        app:cardIsCircle="true"/>
+
+    <com.evil.card.CardFrameLayout
+        android:id="@+id/cardframelayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="你好" />
+    </com.evil.card.CardFrameLayout>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_margin="30dp"
+        android:layout_margin="10dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardCornerRadius="10dp"
         app:cardElevation="8dp">

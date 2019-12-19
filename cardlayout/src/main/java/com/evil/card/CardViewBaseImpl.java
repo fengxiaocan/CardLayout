@@ -1,4 +1,4 @@
-package com.evil.cardlayout;
+package com.evil.card;
 
 import android.content.Context;
 import android.content.res.ColorStateList;

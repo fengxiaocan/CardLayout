@@ -1,4 +1,4 @@
-package com.evil.cardlayout;
+package com.evil.card;
 
 import android.graphics.drawable.Drawable;
 import android.view.View;
