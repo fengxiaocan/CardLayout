@@ -3,11 +3,13 @@ package com.evil.card;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
 
 /**
  * @author noah
@@ -23,7 +25,7 @@ public class CardButton extends Button implements ICardLayout {
     }
 
     public CardButton(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, android.support.v7.cardview.R.attr.cardViewStyle);
+        this(context, attrs, R.attr.cardViewStyle);
     }
 
     public CardButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr)
@@ -169,13 +171,13 @@ public class CardButton extends Button implements ICardLayout {
 
     @Override
     public void setBackgroundColor(int color) {
-        super.setBackgroundColor(color);
+//        super.setBackgroundColor(color);
         HELPER.setCardBackgroundColor(color);
     }
 
     @Override
     public void setBackgroundTintList(ColorStateList tint) {
-        super.setBackgroundTintList(tint);
+//        super.setBackgroundTintList(tint);
         HELPER.setCardBackgroundColor(tint);
     }
 

@@ -3,8 +3,8 @@ package com.evil.card;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import android.view.View;
 
 /**

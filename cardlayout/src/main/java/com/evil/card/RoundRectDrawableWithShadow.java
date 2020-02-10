@@ -13,7 +13,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * @author noah
@@ -47,12 +47,12 @@ class RoundRectDrawableWithShadow extends Drawable {
 			float maxShadowSize)
 	{
 		this.mShadowStartColor = resources
-				.getColor(android.support.v7.cardview.R.color.cardview_shadow_start_color);
+				.getColor(R.color.cardview_shadow_start_color);
 		
 		this.mShadowEndColor = resources
-				.getColor(android.support.v7.cardview.R.color.cardview_shadow_end_color);
+				.getColor(R.color.cardview_shadow_end_color);
 		this.mInsetShadow = resources.getDimensionPixelSize(
-				android.support.v7.cardview.R.dimen.cardview_compat_inset_shadow);
+				R.dimen.cardview_compat_inset_shadow);
 		this.mPaint = new Paint(5);
 		this.setBackground(backgroundColor);
 		this.mCornerShadowPaint = new Paint(5);

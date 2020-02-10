@@ -1,9 +1,10 @@
 package com.evil.test;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.evil.card.CardFrameLayout;
 import com.evil.card.CardLinearLayout;
