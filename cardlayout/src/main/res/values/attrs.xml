@@ -2,6 +2,8 @@
 <resources>
     <attr name="cardIsCircle" format="boolean" />
     <attr name="cardIsRounded" format="boolean" />
+    <attr name="androidMinWidth" format="dimension" />
+    <attr name="androidMinHeight" format="dimension" />
     <declare-styleable name="CardLayout">
         <attr name="cardIsCircle" />
         <attr name="cardIsRounded" />
@@ -16,8 +18,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardLinearLayout">
         <attr name="cardIsCircle" />
@@ -33,8 +35,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
 
     <declare-styleable name="CardFrameLayout">
@@ -51,8 +53,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
 
     <declare-styleable name="CardRelativeLayout">
@@ -69,8 +71,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardTextView">
         <attr name="cardIsCircle" />
@@ -86,8 +88,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardImageView">
         <attr name="cardIsCircle" />
@@ -103,8 +105,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardButton">
         <attr name="cardIsCircle" />
@@ -120,8 +122,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardImageButton">
         <attr name="cardIsCircle" />
@@ -137,8 +139,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardEditText">
         <attr name="cardIsCircle" />
@@ -154,8 +156,8 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
     <declare-styleable name="CardViews">
         <attr name="cardIsCircle" />
@@ -171,7 +173,7 @@
         <attr name="contentPaddingTop" />
         <attr name="contentPaddingRight" />
         <attr name="contentPaddingBottom" />
-        <attr name="android_minWidth" />
-        <attr name="android_minHeight" />
+        <attr name="androidMinWidth" />
+        <attr name="androidMinHeight" />
     </declare-styleable>
 </resources>

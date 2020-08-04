@@ -3,8 +3,8 @@ package com.evil.card;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -23,7 +23,7 @@ public class CardFrameLayout extends FrameLayout implements ICardLayout {
     }
 
     public CardFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, android.support.v7.cardview.R.attr.cardViewStyle);
+        this(context, attrs, R.attr.cardViewStyle);
     }
 
     public CardFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr)

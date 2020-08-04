@@ -7,10 +7,10 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.Px;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.Px;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -110,13 +110,13 @@ public final class CardLayoutHelper implements CardViewDelegate, ICardLayout {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             minimumWidth = getCardView().getMinimumWidth();
         }
-        this.mUserSetMinWidth = a.getDimensionPixelSize(R.styleable.CardLayout_android_minWidth,
+        this.mUserSetMinWidth = a.getDimensionPixelSize(R.styleable.CardLayout_androidMinWidth,
                 minimumWidth);
         int minimumHeight = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             minimumHeight = getCardView().getMinimumHeight();
         }
-        this.mUserSetMinHeight = a.getDimensionPixelSize(R.styleable.CardLayout_android_minHeight,
+        this.mUserSetMinHeight = a.getDimensionPixelSize(R.styleable.CardLayout_androidMinHeight,
                 minimumHeight);
         a.recycle();
         IMPL.initialize(this, context, backgroundColor, radius, elevation, maxElevation);
