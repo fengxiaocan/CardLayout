@@ -167,13 +167,13 @@ public class CardLinearLayout extends LinearLayout implements ICardLayout {
 
     @Override
     public void setBackgroundColor(int color) {
-        super.setBackgroundColor(color);
+//        super.setBackgroundColor(color);
         HELPER.setCardBackgroundColor(color);
     }
 
     @Override
     public void setBackgroundTintList(ColorStateList tint) {
-        super.setBackgroundTintList(tint);
+//        super.setBackgroundTintList(tint);
         HELPER.setCardBackgroundColor(tint);
     }
 
