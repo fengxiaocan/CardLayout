@@ -22,6 +22,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:+'
-    implementation 'androidx.cardview:cardview:+'
+    compileOnly 'androidx.appcompat:appcompat:+'
+    compileOnly 'androidx.cardview:cardview:+'
 }
